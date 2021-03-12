@@ -21,8 +21,8 @@ In this repository you can find all sorts of different games played by your comp
 
 | Game Name     | Language Used | Libraries Used |
 | ------------- |:-------------:|:-------------: |
-| Snake Game    | Python        | p5             |
-| Tic Tac Tow   | Javascript    | p5             |
+| Snake Game    | Python        | pygame         |
+| Tic Tac Tow   | Python        | p5             |
 | Dot           | Javascript    | p5             |
 | Dot2          | Javascript    | p5             |
 
@@ -35,9 +35,9 @@ In this repository you can find all sorts of different games played by your comp
 | Game Name     | Finished       | What need to be implemented      |
 | ------------- |:--------------:|:--------------------------------:|
 | Snake Game    | ❌            | The algorithm is not implemented |
-| Tic Tac Tow   | ✔️            | Nothing                          |
-| Dot           | ✔️            | Nothing                          |
-| Dot2          | ✔️            | Nothing                          |
+| Tic Tac Tow   | ✔️            | Nothing / -                      |
+| Dot           | ✔️            | Nothing / -                      |
+| Dot2          | ✔️            | Nothing / -                      |
 
 
 *Again, If I missed a game it is probably because I did not modified the `MD` file.*
