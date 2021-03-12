@@ -5,37 +5,51 @@ const TABLE_SIZE = MAP/DOT_SIZE
 
 const FRAME = 6;
 
-let snakeLenght = 3;
-let foodCoordinates = [-1, -1];
-let snakeCoordinates = [3, 3];
+let food_coordinates = [-1, -1];
+let snake_coordinates = [3, 3];
 
 let board = new Array(TABLE_SIZE).fill(0).map(() => new Array(TABLE_SIZE).fill(0));
 let move = 0;
 
-let bestScore = 0;
+let score = 0;
+let best_score = 0;
+
+/* Q-VARIABLES */
+/* HYPERPARAMS */
+let q_table = {}
+
+const EPOCHS = 10000000;
+
+const learning_rate = 0.005;
+const discount = 0.95;
+
+const MOVE_PENALTY = 0.5
+const COLLISION_PENALTY = 500
+const FOOD_REWARD = 50000
+
+let epsilon = 0.5;
+const EPS_DECAY = 0.9998
 
 function setup(){
     createCanvas(MAP, MAP);
     frameRate(FRAME);
     setDotGameBoard();
+
+    createQTable();
+    dotTrainingPhase();
+
+    restartGame();
 }
 
 function draw(){
-    background(20);
-    let collisionDetected = drawGameFrame();
-    if (collisionDetected) restartGame();
-}
+    obs = calculateNextMove();
 
-function keyPressed() {
-    if(keyCode === LEFT_ARROW) {
-        move = 3;
-    }else if(keyCode === RIGHT_ARROW) {
-        move = 2;
-    }else if(keyCode === UP_ARROW) {
-        move = 1;
-    }else if(keyCode === DOWN_ARROW) {
-        move = 0;
-    }
+    background(20);
+    collision = drawGameFrame();
+    
+    reward = calculateNextMoveReward();
+    calculateTheQTableError(snake_coordinates, reward, obs);
+    if (collision) restartGame();
 }
 
 function drawGameFrame() {
