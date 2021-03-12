@@ -13,7 +13,7 @@ Inside this repository you will find old classic games made with all sorts of te
 
 In this repository you can find all sorts of different games played by your computer. As you can see I used all sorts of different algorithms just to expirement and understand them.
 
-*We can identify the algorithm that was used by reading the games directory name.* 
+*You can identify the algorithm that was used by reading the games directory name.* 
 
 ## Techonogies ⚙️
 
