@@ -5,14 +5,14 @@ const TABLE_SIZE = MAP/DOT_SIZE
 
 const FRAME = 6;
 
-let food_coordinates = [-1, -1];
-let snake_coordinates = [3, 3];
+let foodCoordinates = [-1, -1];
+let snakeCoordinates = [3, 3];
 
 let board = new Array(TABLE_SIZE).fill(0).map(() => new Array(TABLE_SIZE).fill(0));
 let move = 0;
 
 let score = 0;
-let best_score = 0;
+let bestScore = 0;
 
 /* Q-VARIABLES */
 /* HYPERPARAMS */
@@ -48,7 +48,7 @@ function draw(){
     collision = drawGameFrame();
     
     reward = calculateNextMoveReward();
-    calculateTheQTableError(snake_coordinates, reward, obs);
+    calculateTheQTableError(snakeCoordinates, reward, obs);
     if (collision) restartGame();
 }
 

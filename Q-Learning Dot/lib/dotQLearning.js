@@ -4,13 +4,13 @@ function dotTrainingPhase() {
         collision = snakeGameBoardLogic();
         
         reward = calculateNextMoveReward();
-        calculateTheQTableError(snake_coordinates, reward, obs);
+        calculateTheQTableError(snakeCoordinates, reward, obs);
         if (collision) restartGame();
     }
 }
 
 function calculateNextMove() {
-    obs = [snake_coordinates[0]-food_coordinates[0], snake_coordinates[1]-food_coordinates[1]];
+    obs = [snakeCoordinates[0]-foodCoordinates[0], snakeCoordinates[1]-foodCoordinates[1]];
     if(Math.random() > epsilon) {
         move = findMaxArgMax(q_table[obs])[0];
     } else {
@@ -21,7 +21,7 @@ function calculateNextMove() {
 
 function calculateNextMoveReward() {
     let reward = -MOVE_PENALTY;
-    if ((snake_coordinates[0] == food_coordinates[0]) && (snake_coordinates[1] == food_coordinates[1])) {
+    if ((snakeCoordinates[0] == foodCoordinates[0]) && (snakeCoordinates[1] == foodCoordinates[1])) {
         reward = FOOD_REWARD;
     } else if (collision) {
         reward = -COLLISION_PENALTY;
@@ -30,7 +30,7 @@ function calculateNextMoveReward() {
 }
 
 function calculateTheQTableError(oldPosition, reward, obs) {
-    new_obs = [[oldPosition[0]-food_coordinates[0], oldPosition[1]-food_coordinates[1]]]
+    new_obs = [[oldPosition[0]-foodCoordinates[0], oldPosition[1]-foodCoordinates[1]]]
 
     max_future_q = findMaxArgMax(q_table[new_obs])[1];
     current_q = q_table[obs][move];

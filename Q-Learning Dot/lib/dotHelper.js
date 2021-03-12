@@ -9,3 +9,11 @@ function findMaxArgMax(array) {
     }
     return [argmax, max];
 }
+
+function changeScoreboard() {
+    document.getElementById("score").innerHTML = `Your score is: ${score}`
+    if (bestScore < score) {
+        document.getElementById("bestScore").innerHTML = `Your high score is: ${score}`
+        bestScore = score
+    }
+}

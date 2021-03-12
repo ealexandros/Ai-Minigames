@@ -8,20 +8,20 @@ function snakeGameBoardLogic() {
     let foodCollision = checkForFoodCollision(nextMove[0], nextMove[1]);
     if (!foodCollision) board[nextMove[0]][nextMove[1]] = 1;
 
-    board[snake_coordinates[0]][snake_coordinates[1]] = 0;
-    snake_coordinates = [nextMove[0], nextMove[1]];
+    board[snakeCoordinates[0]][snakeCoordinates[1]] = 0;
+    snakeCoordinates = [nextMove[0], nextMove[1]];
     return false;
 }
 
 function findNextMovePosition() {
     if(move == 3){
-        return [snake_coordinates[0], snake_coordinates[1]-1];
+        return [snakeCoordinates[0], snakeCoordinates[1]-1];
     }else if(move == 2){
-        return [snake_coordinates[0], snake_coordinates[1]+1];
+        return [snakeCoordinates[0], snakeCoordinates[1]+1];
     }else if(move == 1){
-        return [snake_coordinates[0]-1, snake_coordinates[1]];
+        return [snakeCoordinates[0]-1, snakeCoordinates[1]];
     }else if(move == 0){
-        return [snake_coordinates[0]+1, snake_coordinates[1]];
+        return [snakeCoordinates[0]+1, snakeCoordinates[1]];
     }
 }
 
@@ -50,17 +50,9 @@ function restartGame() {
     setDotGameBoard();
 }
 
-function changeScoreboard() {
-    document.getElementById("score").innerHTML = `Your score is: ${score}`
-    if (best_score < score) {
-        document.getElementById("bestScore").innerHTML = `Your high score is: ${score}`
-        best_score = score
-    }
-}
-
 function setDotGameBoard() {
-    snake_coordinates = [3, 3];
-    board[snake_coordinates[0]][snake_coordinates[1]] = 1;
+    snakeCoordinates = [3, 3];
+    board[snakeCoordinates[0]][snakeCoordinates[1]] = 1;
     addRandomFoodPosition();
 }
 
@@ -70,5 +62,5 @@ function addRandomFoodPosition() {
         food = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
     }
     board[food[0]][food[1]] = -1;
-    food_coordinates = [food[0], food[1]];
+    foodCoordinates = [food[0], food[1]];
 }
