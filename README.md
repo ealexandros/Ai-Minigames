@@ -7,7 +7,7 @@ Inside this repository you will find old classic games made with all sorts of te
 - [About](#about)
 - [Techonogies️](#techonogie)
 - [Game State](#game-state)
-- [About](#conlusion)
+- [Project Conclusion](#conlusion)
 
 ## About
 
