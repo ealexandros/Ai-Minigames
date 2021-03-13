@@ -1,6 +1,8 @@
 from game.Board import BoardSingleton
 import random
 
+import env
+
 class Food:
     def __init__(self):
         self.board = BoardSingleton()
@@ -9,7 +11,7 @@ class Food:
         self.FD_COLOR = (0, 255, 0)
 
     def set_new_food_coordinates(self):
-        self.food_position = [random.randint(0, self.board.DOT_SIZE-1)*self.board.DOT_SIZE for _ in range(2)]
+        self.food_position = [random.randint(0, env.DOT_SIZE-1)*env.DOT_SIZE for _ in range(2)]
 
     def get_food_position(self):
         return self.food_position

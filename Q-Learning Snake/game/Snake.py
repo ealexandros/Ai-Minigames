@@ -1,18 +1,19 @@
 from game.Board import BoardSingleton
+import env
 
 class Snake:
     def __init__(self):
         self.board = BoardSingleton()
 
         self.snake = []
-        self.snake_head = [self.board.MAP_SIZE/2, self.board.MAP_SIZE/2]
+        self.snake_head = [env.MAP_SIZE/2, env.MAP_SIZE/2]
         self.snake_lenght = 1
 
     def call_draw_snake(self):
         self.board.draw_snake(self.snake)
 
     def snake_out_of_range(self):
-        if self.snake_head[0] >= self.board.MAP_SIZE or self.snake_head[0] < 0 or self.snake_head[1] >= self.board.MAP_SIZE or self.snake_head[1] < 0:
+        if(self.snake_head[0] >= env.MAP_SIZE or self.snake_head[0] < 0 or self.snake_head[1] >= env.MAP_SIZE or self.snake_head[1] < 0):
             return True
         return False
 
@@ -31,7 +32,6 @@ class Snake:
 
         new_head = [self.snake_head[0], self.snake_head[1]]
         self.snake.append(new_head)
-
 
         if len(self.snake) > self.snake_lenght:
             del self.snake[0]

@@ -1,4 +1,5 @@
 import pygame
+import env
 
 class BoardSingleton:
     _instance = None
@@ -8,9 +9,6 @@ class BoardSingleton:
         return class_._instance
 
     def __init__(self):
-        self.MAP_SIZE = 400
-        self.BOARD_SIZE = 20
-        self.DOT_SIZE = self.MAP_SIZE/self.BOARD_SIZE
         self.BG_COLOR = (0, 0, 0)
         self.TXT_COLOR = (255, 255, 255)
 
@@ -18,7 +16,7 @@ class BoardSingleton:
         self.score = 0
 
         self.font = pygame.font.SysFont("bahnschrift", 14)
-        self.render_board = pygame.display.set_mode((self.MAP_SIZE, self.MAP_SIZE))
+        self.render_board = pygame.display.set_mode((env.MAP_SIZE, env.MAP_SIZE))
 
     def refresh_board(self):
         self.render_board.fill(self.BG_COLOR)
@@ -37,11 +35,11 @@ class BoardSingleton:
         self.render_board.blit(value, [0, 20])
 
     def draw_rectangle(self, position, COLOR):
-        pygame.draw.rect(self.render_board, COLOR, [position[0], position[1], self.DOT_SIZE, self.DOT_SIZE])
+        pygame.draw.rect(self.render_board, COLOR, [position[0], position[1], env.DOT_SIZE, env.DOT_SIZE])
 
     def draw_snake(self, snake_list):
         for x in snake_list:
-            pygame.draw.rect(self.render_board, (255, 0, 0), [x[0], x[1], self.DOT_SIZE, self.DOT_SIZE])
+            pygame.draw.rect(self.render_board, (255, 0, 0), [x[0], x[1], env.DOT_SIZE, env.DOT_SIZE])
 
     def add_score_point(self):
         self.score = self.score + 1
