@@ -7,7 +7,7 @@ class EventListener:
         self.x = 0
         self.y = env.DOT_SIZE
 
-    def listen(self):
+    def listener(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.exit = True

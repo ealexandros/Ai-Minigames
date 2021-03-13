@@ -19,12 +19,12 @@ In this repository you can find all sorts of different games played by your comp
 
 #### The technologies that I used for every project are listed below:
 
-| Game Name     | Language Used | Libraries Used |
-| ------------- |:-------------:|:-------------: |
-| Snake Game    | Python        | pygame         |
-| Tic Tac Tow   | Python        | p5             |
-| Dot           | Javascript    | p5             |
-| Dot2          | Javascript    | p5             |
+| Game Name     | Language Used | Libraries Used            |
+| ------------- |:-------------:|:-------------------------:|
+| Snake Game    | Python        | pygame, tensorflow         |
+| Tic Tac Tow   | Python        | p5                        |
+| Dot           | Javascript    | p5                        |
+| Dot2          | Javascript    | p5                        |
 
 *If I missed a game it is probably because I did not modified the `MD` file.*
 
