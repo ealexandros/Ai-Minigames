@@ -5,19 +5,18 @@ import env
 
 class Food:
     def __init__(self):
-        self.board = BoardSingleton()
-
+        self.food_position = [0, 0]
+        self.board = BoardSingleton.getInstance()
         self.set_new_food_coordinates()
-        self.FD_COLOR = (0, 255, 0)
+
+    def __eq__(self, other):
+        return self.food_position == other.snake_head
 
     def set_new_food_coordinates(self):
-        self.food_position = [random.randint(0, env.DOT_SIZE-1)*env.DOT_SIZE for _ in range(2)]
+        self.food_position = [random.randint(0, env.BOARD_SIZE-1)*env.DOT_SIZE for _ in range(2)]
 
-    def get_food_position(self):
-        return self.food_position
+    def food_draw_frame(self):
+        self.board.draw_rectangle(self.food_position)
 
-    def food_logic(self, snake_position):
-        if(snake_position[0] == self.food_position[0] and snake_position[1] == self.food_position[1]):
-            self.set_new_food_coordinates()
-            self.board.add_score_point()
-        self.board.draw_rectangle(self.food_position, self.FD_COLOR)
+    def get_food_xy(self):
+        return [self.food_position[0]//env.DOT_SIZE, self.food_position[1]//env.DOT_SIZE]
