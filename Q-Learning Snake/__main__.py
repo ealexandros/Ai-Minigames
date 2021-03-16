@@ -10,10 +10,8 @@ game_env = SnakeGameEnv()
 agent = MachineAgent()
 
 for episode in tqdm(range(1, env.EPISODES + 1), ascii=True, unit='episodes'):
-    
-    # Update tensorboard step every episode
-    # agent.tensorboard.step = episode
 
+    agent.tensorboard.step = episode
     current_state, done = game_env.reset()
 
     while(not done):
@@ -24,7 +22,7 @@ for episode in tqdm(range(1, env.EPISODES + 1), ascii=True, unit='episodes'):
 
         new_state, reward, done = game_env.step(action)
 
-        if(env.SHOW_PREVIEW and not episode % env.AGGREGATE_STATS_EVERY):
+        if(env.SHOW_PREVIEW and not episode % env.SHOW_PREVIEW):
             game_env.render()
 
         agent.update_replay_memory((current_state, action, reward, new_state, done))
@@ -35,3 +33,8 @@ for episode in tqdm(range(1, env.EPISODES + 1), ascii=True, unit='episodes'):
     if(env.epsilon > env.MIN_EPSILON):
         env.epsilon = env.epsilon*env.EPSILON_DECAY
         env.epsilon = max(env.MIN_EPSILON, env.epsilon)
+
+    # Graphs
+    agent.tensorboard.update_stats(score=game_env.get_episode_score())
+    if(not episode%env.AGGREGATE_STATS_EVERY or episode == 1):
+        agent.tensorboard.update_stats(epsilon=env.epsilon)

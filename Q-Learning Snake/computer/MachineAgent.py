@@ -7,7 +7,8 @@ from collections import deque
 import time
 import random
 import numpy as np
-import os
+
+from keras.callbacks import TensorBoard
 
 from computer.ModTensorBoard import ModifiedTensorBoard
 import env
@@ -20,7 +21,7 @@ class MachineAgent:
         self.target_model.set_weights(self.model.get_weights())
 
         self.replay_memory = deque(maxlen=env.REPLAY_MEMORY_SIZE)
-        # self.tensorboard = ModifiedTensorBoard(log_dir="logs/{}-{}".format(env.MODEL_NAME, int(time.time())))
+        self.tensorboard = ModifiedTensorBoard(log_dir=f"logs/{env.MODEL_NAME}-{int(time.time())}")
         self.target_update_counter = 0
 
     def create_model(self):
@@ -80,7 +81,7 @@ class MachineAgent:
             y.append(current_qs)
 
         # Fit on all samples as one batch, log only on terminal state
-        self.model.fit(np.array(X)/255, np.array(y), batch_size=env.MINIBATCH_SIZE, verbose=0, shuffle=False)
+        self.model.fit(np.array(X)/255, np.array(y), batch_size=env.MINIBATCH_SIZE, verbose=0, shuffle=False, callbacks=[self.tensorboard] if terminal_state else None)
 
         # Update target network counter every episode
         if terminal_state:

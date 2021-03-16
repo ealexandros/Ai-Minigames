@@ -4,10 +4,8 @@ import random
 import numpy as np
 
 from PIL import Image
-import cv2
 
 import env
-
 from game.Board import BoardSingleton
 from game.Snake import Snake
 from game.Food import Food
@@ -93,3 +91,6 @@ class SnakeGameEnv():
 
         img = Image.fromarray(map_env, 'RGB')
         return img
+
+    def get_episode_score(self):
+        return self.board.score

@@ -12,16 +12,19 @@ class ModifiedTensorBoard(TensorBoard):
         super().__init__(**kwargs)
         self.step = 1
         self.writer =  tf.summary.create_file_writer(self.log_dir)
-        self._log_write_dir = os.path.join(self.log_dir, env.MODEL_NAME)
+        self._log_write_dir = self.log_dir
 
     # Overriding this method to stop creating default log writer
     def set_model(self, model):
         self.model = model
+        
         self._train_dir = os.path.join(self._log_write_dir, 'train')
         self._train_step = self.model._train_counter 
 
         self._val_dir = os.path.join(self._log_write_dir, 'validation')
         self._val_step = self.model._test_counter
+
+        self._should_write_train_graph = False
 
     # Overrided, saves logs with our step number
     # (otherwise every .fit() will start writing from 0th step)
