@@ -22,13 +22,16 @@ class BoardSingleton:
         self.high_score = 0
         self.score = 0
 
+    def restart(self, show_episode):
+        self.zero_scote_point()
+        if(show_episode):
+            self.render_game_board()
+        elif(not show_episode and env.SHOW_PREVIEW):
+            pygame.display.quit()
+
+    def render_game_board(self):
         self.font = pygame.font.SysFont("bahnschrift", 14)
         self.render_board = pygame.display.set_mode((env.MAP_SIZE, env.MAP_SIZE))
-
-    def restart(self):
-        self.render_board.fill(self.COLOR["BG"])
-        self.zero_scote_point()
-        self.update_score()
 
     def refresh_board(self):
         self.render_board.fill(self.COLOR["BG"])

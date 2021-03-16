@@ -13,15 +13,15 @@ from game.EventListener import EventListener
 
 class SnakeGameEnv():
     def __init__(self):
-        pygame.init()
-        pygame.display.set_caption('Q-Learning Snake')
-
-        self.clock = pygame.time.Clock()
-
         self.board = BoardSingleton.getInstance()
         self.food = Food()
         self.snake = Snake()
         self.event = EventListener()
+
+        if(env.SHOW_PREVIEW):
+            pygame.init()
+            pygame.display.set_caption('Q-Learning Snake')
+            self.clock = pygame.time.Clock()
 
     def step(self, action):
         self.snake.action(action)
@@ -54,10 +54,10 @@ class SnakeGameEnv():
         pygame.display.update()
         self.clock.tick(env.FRAME_RATE)
 
-    def reset(self):
+    def reset(self, show_episode):
         self.snake = Snake()
         self.food = Food()
-        self.board.restart()
+        self.board.restart(show_episode)
 
         observation = np.array(self.get_image_map())
         return observation, False
@@ -77,7 +77,7 @@ class SnakeGameEnv():
         return snake_head_temp
 
     def get_image_map(self):
-        map_env = np.zeros((env.BOARD_SIZE, env.BOARD_SIZE, 3), dtype=np.uint8)
+        map_env = np.zeros((env.BOARD_TABLE, env.BOARD_TABLE, 3), dtype=np.uint8)
 
         food_location = self.food.get_food_xy()
         map_env[food_location[0]][food_location[1]] = self.board.COLOR["FD"]
@@ -91,6 +91,9 @@ class SnakeGameEnv():
 
         img = Image.fromarray(map_env, 'RGB')
         return img
+
+    def get_highest_score(self):
+        return self.board.high_score
 
     def get_episode_score(self):
         return self.board.score

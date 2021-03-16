@@ -13,7 +13,7 @@ class Food:
         return self.food_position == other.snake_head
 
     def set_new_food_coordinates(self):
-        self.food_position = [random.randint(0, env.BOARD_SIZE-1)*env.DOT_SIZE for _ in range(2)]
+        self.food_position = [random.randint(0, env.BOARD_TABLE-1)*env.DOT_SIZE for _ in range(2)]
 
     def food_draw_frame(self):
         self.board.draw_rectangle(self.food_position)

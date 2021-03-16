@@ -27,18 +27,18 @@ class MachineAgent:
     def create_model(self):
         model = Sequential()
 
-        model.add(Conv2D(32, (2, 2), input_shape=env.OBSERVATION_SPACE_VALUES))
+        model.add(Conv2D(64, (3, 3), input_shape=env.OBSERVATION_SPACE_VALUES))
         model.add(Activation('relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Dropout(0.2))
 
-        model.add(Conv2D(32, (3, 3)))
+        model.add(Conv2D(64, (3, 3)))
         model.add(Activation('relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Dropout(0.2))
 
         model.add(Flatten())
-        model.add(Dense(16))
+        model.add(Dense(32))
 
         model.add(Dense(env.ACTION_SPACE_SIZE, activation='linear'))
         model.compile(loss="mse", optimizer=Adam(env.LEARNING_RATE), metrics=['accuracy'])
