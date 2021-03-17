@@ -70,6 +70,7 @@ For the setup you will need to have install the following `libs`:
 | Python            | v3.8.8                    |
 | Tensorflow        | v2.2.0                    |
 | Tensorboard       | v2.4.1                    |
+| Keras             | v2.4.3                    |
 | Pygame            | v2.1.0                    |
 | Pillow            | v8.1.2                    |
 | Tqdm              | NaN                       |
@@ -80,11 +81,45 @@ If you want to train the model from scratch I would suggest you to download the 
 
 ## Visualization and Modification
 
-If you want to visualize the progress of your training real time make sure that you have tensorboard install. If you have installed tensorboard 
+If you want to visualize the progress of your training real time make sure that you have tensorboard install. If you have installed tensorboard just type this command on you terminal:
+
 ```bash
--> tensorboard --logdir='logs\'
+..\Q-learning Snake>tensorboard --logdir='logs\'
 ```
+
+Now if you want to add a existing model you can type the next command:
+
+
+```bash
+..\Q-learning Snake>python __init__.py -p path_of_model
+```
+
+Where the path_of_model is the relative path to the model you want to use.
 
 ## Train
 
+If you want to train a new rl model I recommend you to download the tensorflow-gpu because it takes a lot of time. For more information about tesnorflow gpu you can find [here](https://www.tensorflow.org/install/gpu).
+
+In order to make your own model you can change the params in the `env.py` file. More specifically:
+```
+EPISODES             = ...
+MINIBATCH_SIZE       = ...
+DISCOUNT             = ...
+
+LEARNING_RATE        = ...
+MOVE_PENALTY         = ...
+INVALID_MOVE_PENALTY = ...
+FOOD_REWARD          = ...
+
+epsilon              = ...
+EPSILON_DECAY        = ...
+MIN_EPSILON          = ...
+```
+
+After you change the params you want to change just run the __init__.py file and the training will start.
+
+Last but not least you can change the model in the `MachineAgent.py` file.
+
 ## Conclusion ✨
+
+This is by far my best project with reinforcement learning.
