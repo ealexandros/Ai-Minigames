@@ -7,6 +7,7 @@ from collections import deque
 import time
 import random
 import numpy as np
+import sys
 
 from keras.callbacks import TensorBoard
 
@@ -16,6 +17,8 @@ import env
 class MachineAgent:
     def __init__(self):
         self.model = self.create_model()
+        if('-p' in sys.argv and sys.argv.index('-p')+1 < len(sys.argv)):
+            self.model.load_weights(sys.argv[sys.argv.index("-p")+1])
 
         self.target_model = self.create_model()
         self.target_model.set_weights(self.model.get_weights())
