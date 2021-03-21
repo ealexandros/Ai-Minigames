@@ -1,6 +1,6 @@
 # Q-learning Snake 🐉
 
-*This is one of the most fun and productive games I made thus far in this repo.*
+*This is one of the most fun and productive games I made thus far in this repository.*
 
 ## Table of Content (ToC)
 
@@ -73,11 +73,12 @@ For the setup you will need to have install the following `libs`:
 | Keras             | v2.4.3                    |
 | Pygame            | v2.1.0                    |
 | Pillow            | v8.1.2                    |
+| Opencv            | v4.5.1.48                 |
 | Tqdm              | NaN                       |
 
 *The `NaN` means that every version can be installed.* 
 
-If you want to train the model from scratch I would suggest you to download the tensorflow-gpu more information about that you can find here: [tensorflow-gpu](https://www.tensorflow.org/install/gpu)
+If you want to train the model from scratch I would suggest you to download the tensorflow-gpu. More information about that you can find here: [tensorflow-gpu](https://www.tensorflow.org/install/gpu).
 
 ## Visualization and Modification
 
