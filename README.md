@@ -5,7 +5,7 @@ Inside this repository you will find old classic games made with all sorts of te
 ## Table of Content
 
 - [About](#about)
-- [Techonogies️](#techonogie)
+- [Technologies️](#technologies)
 - [Game State](#game-state)
 - [Project Conclusion](#conlusion)
 
@@ -15,7 +15,7 @@ In this repository you can find all sorts of different games played by your comp
 
 *You can identify the algorithm that was used by reading the games directory name.* 
 
-## Techonogies ⚙️
+## Technologies ⚙️
 
 #### The technologies that I used for every project are listed below:
 
