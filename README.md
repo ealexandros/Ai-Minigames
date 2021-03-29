@@ -34,7 +34,7 @@ In this repository you can find all sorts of different games played by your comp
 
 | Game Name     | Finished       | What need to be implemented      |
 | ------------- |:--------------:|:--------------------------------:|
-| Snake Game    | ❌            | The algorithm is not implemented |
+| Snake Game    | ✔️            | Nothing / -                      |
 | Tic Tac Tow   | ✔️            | Nothing / -                      |
 | Dot           | ✔️            | Nothing / -                      |
 | Dot2          | ✔️            | Nothing / -                      |
